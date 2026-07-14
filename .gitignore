@@ -1,10 +1,32 @@
 .DS_Store
+Thumbs.db
+
+# Environment and local overrides
 .env
+.env.*
+!.env.example
+docker-compose.override.yml
+
+# Editor/IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
 
 # Grav core and default packages are provisioned into the bind mount by Docker.
 /site/*
 !/site/user/
 /site/user/*
+
+# Runtime artifacts
+*.log
+*.tmp
+/site/cache/
+/site/logs/
+/site/tmp/
+/site/backup/
+/site/images/
+/site/vendor/
 
 # Keep only the authored configuration, pages, and theme in Git.
 !/site/user/config/

@@ -1,0 +1,47 @@
+name: Deploy Dockge Stack
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-danielagomez-es
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to docker-compose (Dockge host)
+    runs-on:
+      - self-hosted
+      - linux
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync stack files without overwriting existing content
+        env:
+          STACK_DIR: /opt/stacks/danielagomez-es
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$STACK_DIR"
+
+          # Copy only files that do not already exist in the target stack directory.
+          rsync -a --ignore-existing \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            "$GITHUB_WORKSPACE/" "$STACK_DIR/"
+
+          # Seed .env once if it does not exist yet.
+          if [ ! -f "$STACK_DIR/.env" ] && [ -f "$STACK_DIR/.env.example" ]; then
+            cp "$STACK_DIR/.env.example" "$STACK_DIR/.env"
+          fi
+
+      - name: Pull image and redeploy stack
+        env:
+          STACK_DIR: /opt/stacks/danielagomez-es
+        run: |
+          set -euo pipefail
+          cd "$STACK_DIR"
+          docker compose pull
+          docker compose up -d --remove-orphans
