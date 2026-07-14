@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">After dark placeholder</title><desc id="desc">Abstract portrait placeholder with a sunset gradient.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#272042"/><stop offset=".5" stop-color="#7b4e80"/><stop offset="1" stop-color="#f59f8f"/></linearGradient></defs>
+  <rect width="900" height="1125" fill="url(#bg)"/><circle cx="220" cy="208" r="98" fill="#fff" opacity=".3"/>
+  <path d="M96 1125c79-284 194-423 362-423 160 0 278 139 347 423Z" fill="#181528" opacity=".9"/><ellipse cx="467" cy="422" rx="153" ry="195" fill="#d99a94"/>
+  <path d="M315 428c18-206 73-304 185-304 121 0 178 109 178 300-48-88-109-140-180-140-75 0-124 59-183 144Z" fill="#201b36"/>
+  <circle cx="414" cy="439" r="11" fill="#181528"/><circle cx="526" cy="439" r="11" fill="#181528"/><path d="M441 539c29 19 61 19 91 0" fill="none" stroke="#7b3f62" stroke-linecap="round" stroke-width="9"/>
+</svg>

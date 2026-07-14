@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">City glow placeholder</title><desc id="desc">Abstract portrait placeholder with a pale blue background.</desc>
+  <defs><linearGradient id="bg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5bcefa"/><stop offset=".5" stop-color="#eaf7ff"/><stop offset="1" stop-color="#f5a9b8"/></linearGradient></defs>
+  <rect width="900" height="1125" fill="url(#bg)"/><path d="M0 890 135 820l112 58 116-152 115 121 122-85 134 65 166-112v410H0Z" fill="#fff" opacity=".38"/>
+  <path d="M146 1125c84-285 207-421 347-421 146 0 267 136 332 421Z" fill="#2b3655" opacity=".86"/><ellipse cx="468" cy="421" rx="152" ry="192" fill="#f7c5ba"/>
+  <path d="M317 430c3-183 72-292 182-292 120 0 177 104 177 289-70-96-117-127-183-127-72 0-121 54-176 130Z" fill="#3b3b62"/>
+  <circle cx="416" cy="436" r="11" fill="#2b3655"/><circle cx="526" cy="436" r="11" fill="#2b3655"/><path d="M439 539c26 18 61 18 89 0" fill="none" stroke="#b45b74" stroke-linecap="round" stroke-width="9"/>
+</svg>

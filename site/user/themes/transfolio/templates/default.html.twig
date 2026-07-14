@@ -1,0 +1,13 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <section class="page-shell shell">
+    <div class="page-heading">
+      <p class="eyebrow">{{ page.header.eyebrow|default('A little more Daniela')|e }}</p>
+      <h1>{{ page.title|e }}</h1>
+    </div>
+    <div class="prose">
+      {{ page.content|raw }}
+    </div>
+  </section>
+{% endblock %}

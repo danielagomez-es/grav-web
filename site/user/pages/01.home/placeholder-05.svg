@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">A little sparkle placeholder</title><desc id="desc">Abstract portrait placeholder with a rose background.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d6e7"/><stop offset=".5" stop-color="#e69bb2"/><stop offset="1" stop-color="#5bcefa"/></linearGradient></defs>
+  <rect width="900" height="1125" fill="url(#bg)"/><g fill="#fff" opacity=".72"><circle cx="146" cy="184" r="7"/><circle cx="735" cy="310" r="9"/><circle cx="783" cy="178" r="5"/><path d="m196 327 10 25 26 10-26 10-10 26-10-26-26-10 26-10Z"/><path d="m735 555 9 22 24 9-24 9-9 23-9-23-24-9 24-9Z"/></g>
+  <path d="M122 1125c66-286 194-432 346-432 151 0 277 146 333 432Z" fill="#44304e" opacity=".88"/><ellipse cx="470" cy="419" rx="154" ry="193" fill="#f4bdad"/>
+  <path d="M314 428c16-198 72-302 183-302 119 0 180 108 180 294-47-83-111-135-182-135-77 0-123 57-181 143Z" fill="#3d2d55"/>
+  <path d="M390 438c0-14 11-25 25-25s25 11 25 25-11 25-25 25-25-11-25-25Zm127 0c0-14 11-25 25-25s25 11 25 25-11 25-25 25-25-11-25-25Z" fill="#30243d"/><path d="M442 538c30 19 62 19 94 0" fill="none" stroke="#a54c6b" stroke-linecap="round" stroke-width="9"/>
+</svg>

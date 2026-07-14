@@ -1,0 +1,8 @@
+enabled: true
+default_lang: en
+timezone: Europe/Madrid
+pages:
+  theme: transfolio
+  process:
+    markdown: true
+    twig: true

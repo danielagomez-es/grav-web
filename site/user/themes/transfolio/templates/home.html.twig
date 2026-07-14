@@ -1,0 +1,90 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <section class="hero shell" aria-labelledby="hero-title">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ page.header.hero_eyebrow|e }}</p>
+      <h1 id="hero-title">{{ page.header.hero_title|e }}</h1>
+      <p class="hero__intro">{{ page.header.hero_intro|e }}</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="{{ page.header.hero_primary_url|e }}">{{ page.header.hero_primary_label|e }} <span aria-hidden="true">↓</span></a>
+        <a class="text-link" href="{{ url('/contact') }}">{{ page.header.hero_secondary_label|e }} <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero__trust">
+        <span class="flag-bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <span>soft energy, clear boundaries, good company</span>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-label="Portrait placeholder">
+      <div class="hero__glow hero__glow--one"></div>
+      <div class="hero__glow hero__glow--two"></div>
+      <div class="hero__frame hero__frame--back"></div>
+      <div class="hero__frame hero__frame--front">
+        <img src="{{ page.media['placeholder-01.svg'].url }}" alt="Abstract portrait placeholder; replace with your own image">
+        <span class="hero__label">YOUR IMAGE HERE</span>
+      </div>
+      <div class="hero__sticker"><span>✦</span><br>trans joy<br>looks good<br>on you</div>
+    </div>
+  </section>
+
+  <section class="gallery-section shell" id="gallery" aria-labelledby="gallery-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">A visual hello</p>
+        <h2 id="gallery-title">{{ page.header.gallery_title|e }}</h2>
+      </div>
+      <p>{{ page.header.gallery_intro|e }}</p>
+    </div>
+
+    <div class="gallery-grid">
+      {% for card in page.header.gallery %}
+        {% set image = page.media[card.image] %}
+        <figure class="gallery-card">
+          <a class="gallery-card__image" href="{{ image.url }}" data-lightbox="gallery" data-caption="{{ card.caption|e }}" aria-label="Open {{ card.caption|e }} image">
+            <img src="{{ image.url }}" alt="{{ card.alt|e }}" loading="{% if loop.index > 2 %}lazy{% else %}eager{% endif %}">
+            <span class="gallery-card__open" aria-hidden="true">↗</span>
+          </a>
+          <figcaption>
+            <span class="gallery-card__caption">{{ card.caption|e }}</span>
+            <span class="gallery-card__note">{{ card.note|e }}</span>
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="about-band" id="about" aria-labelledby="about-title">
+    <div class="shell split-section">
+      <div>
+        <p class="eyebrow">A feeling worth keeping</p>
+        <h2 id="about-title">{{ page.header.about_title|e }}</h2>
+      </div>
+      <div class="split-section__body">
+        <p>{{ page.header.about_text|e }}</p>
+        <a class="text-link" href="{{ url('/about') }}">Read more about me <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band" id="contact" aria-labelledby="contact-title">
+    <div class="shell contact-band__inner">
+      <div>
+        <p class="eyebrow">An open invitation</p>
+        <h2 id="contact-title">{{ page.header.contact_title|e }}</h2>
+      </div>
+      <div class="contact-band__copy">
+        <p>{{ page.header.contact_text|e }}</p>
+        <a class="button button--light" href="{{ url('/contact') }}">Start a conversation <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" data-lightbox-dialog hidden>
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close image">×</button>
+    <figure class="lightbox__figure">
+      <img src="" alt="" data-lightbox-image>
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+  </div>
+{% endblock %}

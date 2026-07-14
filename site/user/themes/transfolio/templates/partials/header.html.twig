@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="site-header__stripe" aria-hidden="true"></div>
+  <div class="site-header__inner shell">
+    <a class="brand" href="{{ url('/') }}" aria-label="{{ config.site.title|e }} home">
+      <span class="brand__mark" aria-hidden="true"><span></span></span>
+      <span class="brand__copy">
+        <span class="brand__name">{{ config.site.title|e }}</span>
+        <span class="brand__tagline">warmth · discretion · sparkle</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      {% for item in pages.children.visible %}
+        {% if not item.header.hide_in_nav %}
+          <a class="main-nav__link{% if item.active %} is-active{% endif %}" href="{{ item.url }}">{{ item.menu|default(item.title)|e }}</a>
+        {% endif %}
+      {% endfor %}
+      <a class="button button--small button--dark" href="{{ url('/contact') }}">Let’s talk <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>

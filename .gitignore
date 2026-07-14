@@ -1,0 +1,19 @@
+.DS_Store
+.env
+
+# Grav core and default packages are provisioned into the bind mount by Docker.
+/site/*
+!/site/user/
+/site/user/*
+
+# Keep only the authored configuration, pages, and theme in Git.
+!/site/user/config/
+/site/user/config/*
+!/site/user/config/site.yaml
+!/site/user/config/system.yaml
+!/site/user/pages/
+!/site/user/pages/**
+!/site/user/themes/
+/site/user/themes/*
+!/site/user/themes/transfolio/
+!/site/user/themes/transfolio/**

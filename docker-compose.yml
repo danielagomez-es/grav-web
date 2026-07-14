@@ -1,0 +1,22 @@
+name: danielagomez
+
+services:
+  grav:
+    image: getgrav/grav:latest
+    container_name: danielagomez-grav
+    environment:
+      GRAV_SETUP: "true"
+      GRAV_CHANNEL: "stable"
+      GRAV_SCHEDULER: "true"
+      FIX_PERMISSIONS: "${FIX_PERMISSIONS:-false}"
+    ports:
+      - "${GRAV_PORT:-8080}:80"
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.danielagomez.loadbalancer.server.port=80
+      - traefik.http.routers.danielagomez.rule=Host(`danielagomez.es`) || Host(`www.danielagomez.es`)
+      - traefik.http.routers.danielagomez.entrypoints=websecure
+      - traefik.http.routers.danielagomez.tls.certresolver=acmeresolver
+    volumes:
+      - ./site:/var/www/html
+    restart: unless-stopped

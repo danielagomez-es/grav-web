@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">Late afternoon placeholder</title><desc id="desc">Abstract portrait placeholder with a coral gradient.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#f59f8f"/><stop offset=".55" stop-color="#f7c5a4"/><stop offset="1" stop-color="#5bcefa"/></linearGradient></defs>
+  <rect width="900" height="1125" fill="url(#bg)"/><circle cx="755" cy="175" r="184" fill="#fff" opacity=".3"/>
+  <path d="M120 1125c90-280 192-423 352-423 159 0 275 143 323 423Z" fill="#302745" opacity=".9"/><ellipse cx="472" cy="422" rx="150" ry="192" fill="#f2b7a6"/>
+  <path d="M319 415c20-174 71-273 182-273 119 0 173 101 173 275-44-67-103-102-178-105-66-2-121 31-177 103Z" fill="#43314e"/>
+  <path d="M389 439h56m60 0h56" stroke="#302745" stroke-linecap="round" stroke-width="13"/><path d="M444 533c27 19 62 20 94 0" fill="none" stroke="#ab526b" stroke-linecap="round" stroke-width="9"/>
+</svg>

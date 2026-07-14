@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ grav.language.getActive ?: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ config.site.metadata.description|e }}">
+  <meta name="theme-color" content="#211a32">
+  <title>{% if page.title %}{{ page.title|e }} · {% endif %}{{ config.site.title|e }}</title>
+  <link rel="stylesheet" href="{{ url('theme://css/transfolio.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  {% include 'partials/header.html.twig' %}
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'partials/footer.html.twig' %}
+
+  <script src="{{ url('theme://js/transfolio.js') }}" defer></script>
+</body>
+</html>

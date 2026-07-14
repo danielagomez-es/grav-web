@@ -1,0 +1,24 @@
+name: Transfolio
+slug: transfolio
+type: theme
+version: 1.0.0
+description: "A gallery-first, trans-positive personal portfolio theme."
+icon: transgender
+author:
+  name: "danielagomez.es"
+license: MIT
+dependencies:
+  - { name: grav, version: '>=2.0.0' }
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: Enabled
+      highlight: 1
+      default: 1
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
