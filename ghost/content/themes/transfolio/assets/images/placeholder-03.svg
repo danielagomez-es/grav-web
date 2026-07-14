@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder portrait in late afternoon</title>
+  <desc id="desc">An abstract portrait silhouette in coral, gold, and navy tones.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f5a9b8"/><stop offset=".55" stop-color="#f59f8f"/><stop offset="1" stop-color="#5bcefa"/></linearGradient>
+  </defs>
+  <rect width="900" height="1125" fill="url(#bg)"/>
+  <circle cx="160" cy="190" r="105" fill="#fff" opacity=".58"/>
+  <circle cx="454" cy="378" r="170" fill="#211a32"/>
+  <path d="M154 930c26-236 132-350 300-350s274 114 300 350z" fill="#211a32"/>
+  <path d="M291 309c64-150 236-169 338-21-72-33-144-37-209-14-48 17-85 32-129 35z" fill="#211a32"/>
+  <path d="M313 673c88 43 194 43 282 0l57 257H252z" fill="#f5a9b8" opacity=".76"/>
+  <circle cx="407" cy="362" r="10" fill="#f59f8f"/><circle cx="501" cy="362" r="10" fill="#f59f8f"/>
+</svg>

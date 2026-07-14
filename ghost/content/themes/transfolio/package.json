@@ -1,0 +1,27 @@
+{
+  "name": "transfolio",
+  "description": "A warm, gallery-first Ghost theme for a trans-positive personal portfolio.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "danielagomez.es"
+  },
+  "engines": {
+    "ghost-api": "v6"
+  },
+  "config": {
+    "posts_per_page": 6,
+    "card_assets": false,
+    "image_sizes": {
+      "s": {
+        "width": 600
+      },
+      "m": {
+        "width": 1000
+      },
+      "l": {
+        "width": 1600
+      }
+    }
+  }
+}

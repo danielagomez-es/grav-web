@@ -1,0 +1,11 @@
+routes:
+  /: home
+
+collections:
+  /journal/:
+    permalink: /journal/{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

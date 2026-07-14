@@ -1,0 +1,88 @@
+{{!< default}}
+
+<section class="hero shell" aria-labelledby="hero-title">
+  <div class="hero__copy">
+    <p class="eyebrow">Presence, warmth &amp; a little sparkle</p>
+    <h1 id="hero-title">A discreet, confident presence for beautiful evenings.</h1>
+    <p class="hero__intro">{{#if @site.description}}{{@site.description}}{{else}}Hello, I’m Daniela — a trans woman with a soft spot for good conversation, thoughtful details and the kind of chemistry that makes time slow down.{{/if}}</p>
+    <div class="hero__actions">
+      <a class="button button--primary" href="#gallery">See the gallery <span aria-hidden="true">↓</span></a>
+      <a class="text-link" href="{{@site.url}}/contact/">Get in touch <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="hero__trust">
+      <span class="flag-bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span>soft energy, clear boundaries, good company</span>
+    </div>
+  </div>
+
+  <div class="hero__visual" aria-label="Portrait placeholder">
+    <div class="hero__glow hero__glow--one"></div>
+    <div class="hero__glow hero__glow--two"></div>
+    <div class="hero__frame hero__frame--back"></div>
+    <div class="hero__frame hero__frame--front">
+      {{#if @site.cover_image}}
+        <img src="{{img_url @site.cover_image size="l"}}" alt="{{@site.title}} cover image">
+      {{else}}
+        <img src="{{asset "images/placeholder-01.svg"}}" alt="Abstract portrait placeholder; replace with your own cover image">
+      {{/if}}
+      <span class="hero__label">SET YOUR COVER IMAGE</span>
+    </div>
+    <div class="hero__sticker"><span>✦</span><br>trans joy<br>looks good<br>on you</div>
+  </div>
+</section>
+
+<section class="gallery-section shell" id="gallery" aria-labelledby="gallery-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">A visual hello</p>
+      <h2 id="gallery-title">A few moments</h2>
+    </div>
+    <p>Publish posts with the <strong>gallery</strong> tag and a featured image to replace these starter placeholders from Ghost Admin.</p>
+  </div>
+
+  <div class="gallery-grid">
+    {{#get "posts" filter="tag:gallery" limit="6" include="authors,tags"}}
+      {{#if posts}}
+        {{#foreach posts}}
+          {{> gallery-card}}
+        {{/foreach}}
+      {{else}}
+        {{> placeholder-gallery}}
+      {{/if}}
+    {{/get}}
+  </div>
+</section>
+
+<section class="about-band" aria-labelledby="about-title">
+  <div class="shell split-section">
+    <div>
+      <p class="eyebrow">A feeling worth keeping</p>
+      <h2 id="about-title">A little more Daniela</h2>
+    </div>
+    <div class="split-section__body">
+      <p>I value clear communication, mutual respect and making every meeting feel easy from the first hello. This space is a small introduction; the rest is best discovered in conversation.</p>
+      <a class="text-link" href="{{@site.url}}/about/">Read more about me <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-band" aria-labelledby="contact-title">
+  <div class="shell contact-band__inner">
+    <div>
+      <p class="eyebrow">An open invitation</p>
+      <h2 id="contact-title">Let’s make a plan</h2>
+    </div>
+    <div class="contact-band__copy">
+      <p>Tell me a little about yourself, the date you have in mind and the kind of evening you would enjoy. I’ll get back to you as soon as I can.</p>
+      <a class="button button--light" href="{{@site.url}}/contact/">Start a conversation <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" data-lightbox-dialog hidden>
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close image">×</button>
+  <figure class="lightbox__figure">
+    <img src="" alt="" data-lightbox-image>
+    <figcaption data-lightbox-caption></figcaption>
+  </figure>
+</div>

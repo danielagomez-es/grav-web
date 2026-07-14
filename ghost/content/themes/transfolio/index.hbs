@@ -1,0 +1,17 @@
+{{!< default}}
+
+<section class="archive-shell shell">
+  <div class="page-heading">
+    <p class="eyebrow">Notes &amp; moments</p>
+    <h1>Journal</h1>
+    <p class="page-heading__intro">Short notes, availability updates and little glimpses behind the gallery.</p>
+  </div>
+
+  <div class="journal-grid">
+    {{#foreach posts}}
+      {{> gallery-card}}
+    {{else}}
+      <p class="empty-state">Your journal is ready for its first post.</p>
+    {{/foreach}}
+  </div>
+</section>

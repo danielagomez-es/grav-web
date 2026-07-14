@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Sync stack files without overwriting existing content
+      - name: Sync deployment files and authored Ghost theme
         env:
           STACK_DIR: /opt/stacks/danielagomez-es
         run: |
@@ -25,11 +25,25 @@ jobs:
 
           mkdir -p "$STACK_DIR"
 
-          # Copy only files that do not already exist in the target stack directory.
-          rsync -a --ignore-existing \
-            --exclude '.git/' \
-            --exclude '.github/' \
-            "$GITHUB_WORKSPACE/" "$STACK_DIR/"
+          # Update deployment files, but keep the host-owned .env untouched.
+          rsync -a \
+            "$GITHUB_WORKSPACE/docker-compose.yml" \
+            "$GITHUB_WORKSPACE/.env.example" \
+            "$STACK_DIR/"
+
+          # Update the authored theme and routes without touching Ghost's
+          # runtime data, uploaded images, logs, or other installed themes.
+          mkdir -p \
+            "$STACK_DIR/ghost/content/themes/transfolio" \
+            "$STACK_DIR/ghost/content/settings"
+
+          rsync -a --delete \
+            "$GITHUB_WORKSPACE/ghost/content/themes/transfolio/" \
+            "$STACK_DIR/ghost/content/themes/transfolio/"
+
+          rsync -a \
+            "$GITHUB_WORKSPACE/ghost/content/settings/routes.yaml" \
+            "$STACK_DIR/ghost/content/settings/routes.yaml"
 
           # Seed .env once if it does not exist yet.
           if [ ! -f "$STACK_DIR/.env" ] && [ -f "$STACK_DIR/.env.example" ]; then

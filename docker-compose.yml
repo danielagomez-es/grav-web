@@ -1,22 +1,72 @@
 name: danielagomez
 
 services:
-  grav:
-    image: getgrav/grav:latest
-    container_name: danielagomez-grav
+  ghost:
+    image: ghost:6-alpine
+    container_name: danielagomez-ghost
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
-      GRAV_SETUP: "true"
-      GRAV_CHANNEL: "stable"
-      GRAV_SCHEDULER: "true"
-      FIX_PERMISSIONS: "${FIX_PERMISSIONS:-false}"
+      NODE_ENV: production
+      url: "${GHOST_URL:-http://localhost:8080}"
+      database__client: mysql
+      database__connection__host: db
+      database__connection__port: 3306
+      database__connection__user: "${MYSQL_USER:-ghost}"
+      database__connection__password: "${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}"
+      database__connection__database: "${MYSQL_DATABASE:-ghost}"
+    # Keep Ghost's writable content on a Docker-managed volume. The
+    # authored theme and routes are copied in on each start so Dockge
+    # deployments can update them without bind-mount chown failures.
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        rm -rf /var/lib/ghost/content/themes/transfolio
+        && mkdir -p /var/lib/ghost/content/themes/transfolio
+        && cp -a /opt/transfolio/. /var/lib/ghost/content/themes/transfolio/
+        && mkdir -p /var/lib/ghost/content/settings
+        && cp /opt/routes.yaml /var/lib/ghost/content/settings/routes.yaml
+        && exec /usr/local/bin/docker-entrypoint.sh node current/index.js
     ports:
-      - "${GRAV_PORT:-8080}:80"
+      - "${GHOST_PORT:-8080}:2368"
     labels:
       - traefik.enable=true
-      - traefik.http.services.danielagomez.loadbalancer.server.port=80
+      - traefik.http.services.danielagomez.loadbalancer.server.port=2368
       - traefik.http.routers.danielagomez.rule=Host(`danielagomez.es`) || Host(`www.danielagomez.es`)
       - traefik.http.routers.danielagomez.entrypoints=websecure
       - traefik.http.routers.danielagomez.tls.certresolver=acmeresolver
     volumes:
-      - ./site:/var/www/html
+      - ghost_content:/var/lib/ghost/content
+      - ./ghost/content/themes/transfolio:/opt/transfolio:ro
+      - ./ghost/content/settings/routes.yaml:/opt/routes.yaml:ro
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:2368/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 45s
     restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: danielagomez-ghost-db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-ghost}"
+      MYSQL_USER: "${MYSQL_USER:-ghost}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}"
+    volumes:
+      - ghost_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  ghost_content:
+  ghost_db_data:

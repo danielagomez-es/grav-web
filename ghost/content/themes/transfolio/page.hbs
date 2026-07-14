@@ -1,0 +1,13 @@
+{{!< default}}
+
+{{#post}}
+  <article class="page-shell shell {{post_class}}">
+    <header class="page-heading">
+      <p class="eyebrow">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}A little more Daniela{{/if}}</p>
+      <h1>{{title}}</h1>
+    </header>
+    <div class="prose">
+      {{content}}
+    </div>
+  </article>
+{{/post}}

@@ -13,29 +13,24 @@ docker-compose.override.yml
 *.swp
 *.swo
 
-# Grav core and default packages are provisioned into the bind mount by Docker.
-/site/*
-!/site/user/
-/site/user/*
+# Legacy Grav runtime; Ghost is now the active CMS.
+/site/
+
+# Ghost runtime state and uploaded media live in Docker-managed volumes.
+/ghost/content/data/
+/ghost/content/images/
+/ghost/content/logs/
+/ghost/content/adapters/
+
+# Keep the authored theme, while allowing Ghost to install its bundled themes.
+/ghost/content/themes/*
+!/ghost/content/themes/transfolio/
+!/ghost/content/themes/transfolio/**
+
+# Keep the authored routing configuration only.
+/ghost/content/settings/*
+!/ghost/content/settings/routes.yaml
 
 # Runtime artifacts
 *.log
 *.tmp
-/site/cache/
-/site/logs/
-/site/tmp/
-/site/backup/
-/site/images/
-/site/vendor/
-
-# Keep only the authored configuration, pages, and theme in Git.
-!/site/user/config/
-/site/user/config/*
-!/site/user/config/site.yaml
-!/site/user/config/system.yaml
-!/site/user/pages/
-!/site/user/pages/**
-!/site/user/themes/
-/site/user/themes/*
-!/site/user/themes/transfolio/
-!/site/user/themes/transfolio/**

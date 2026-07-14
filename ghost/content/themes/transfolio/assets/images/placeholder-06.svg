@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder portrait after dark</title>
+  <desc id="desc">An abstract portrait silhouette framed by trans flag colors at night.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#211a32"/><stop offset=".5" stop-color="#4c345f"/><stop offset="1" stop-color="#211a32"/></linearGradient>
+    <linearGradient id="dress" x1="0" x2="1"><stop stop-color="#5bcefa"/><stop offset=".5" stop-color="#f5a9b8"/><stop offset="1" stop-color="#f59f8f"/></linearGradient>
+  </defs>
+  <rect width="900" height="1125" fill="url(#bg)"/>
+  <circle cx="450" cy="310" r="220" fill="#5bcefa" opacity=".15"/>
+  <circle cx="450" cy="370" r="155" fill="#211a32" stroke="#f5a9b8" stroke-width="12"/>
+  <path d="M145 930c40-250 142-351 305-351s265 101 305 351z" fill="url(#dress)"/>
+  <path d="M299 286c47-119 218-163 326-24-86-44-162-46-230-9-42 23-69 35-96 33z" fill="#211a32"/>
+  <circle cx="398" cy="362" r="10" fill="#f59f8f"/><circle cx="502" cy="362" r="10" fill="#f59f8f"/>
+  <path d="M382 438c46 25 91 25 137 0" fill="none" stroke="#f5a9b8" stroke-width="12" stroke-linecap="round"/>
+</svg>

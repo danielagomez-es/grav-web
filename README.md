@@ -1,6 +1,6 @@
 # danielagomez.es
 
-A small, gallery-first Grav site for a personal escort portfolio.
+A small, gallery-first Ghost site for a personal escort portfolio.
 
 ## Run with Docker Compose or Dockge
 
@@ -8,32 +8,39 @@ The Compose file deliberately uses relative paths, so the whole directory can be
 
 ```sh
 cp .env.example .env
+# Edit .env and set unique database passwords first.
 docker compose up -d
 ```
 
-Open `http://localhost:8080/` (or the host and port configured in `.env`). On first start, the official Grav image installs Grav into `site/` and preserves the starter content already provided there. Visit `/admin` to create the administrator account.
+Open `http://localhost:8080/` locally, or the public URL configured in `GHOST_URL`. Complete the first-run setup at `/ghost/`.
 
 In Dockge:
 
 1. Add the directory containing this `docker-compose.yml` as a stack.
 2. Start or recreate the stack.
-3. Use Dockge's logs if the first-run Grav download or permissions need attention.
+3. Use Dockge's logs if Ghost or MySQL need attention during first start.
 
-## Replacing the placeholders
+The Compose file uses the official Ghost image, a named Ghost content volume, and a named MySQL volume. On startup, the authored theme and routes from `ghost/content/` are copied into that volume; this keeps uploads and Ghost state persistent while avoiding bind-mount ownership problems on Dockge hosts. Traefik routes HTTPS traffic to Ghost's internal port `2368`.
 
-- Replace the six `placeholder-*.svg` files in `site/user/pages/01.home/` with your own optimized images, or edit the `gallery` entries in `default.md` to point at different filenames.
-- Replace the wording and the placeholder `hello@example.com` address in the page files under `site/user/pages/`.
-- Change colours and layout in `site/user/themes/transfolio/css/transfolio.css`.
+## Activate the theme
+
+After completing Ghost setup, go to **Settings → Design** and activate the installed `transfolio` theme. Add navigation links for `/`, `/about/`, `/journal/`, and `/contact/`.
+
+The homepage displays six abstract placeholders until you publish posts with the tag `gallery`. To replace them with real photographs, create published Ghost posts tagged `gallery` and set a featured image on each. The six SVG assets are also available in `ghost/content/themes/transfolio/assets/images/` for easy replacement.
+
+Create Ghost pages with the slugs `about`, `contact`, and `privacy`; the theme provides the matching page layout. Set the site title, description, cover image, and professional contact details in Ghost Admin.
+
+Change colours and layout in `ghost/content/themes/transfolio/assets/css/screen.css`.
 
 The theme uses only local CSS, JavaScript, and images: there are no remote fonts, analytics, or third-party embeds in the starter site.
 
 ## Updating
 
-Back up `site/` before updates, then pull and recreate the image:
+Back up the `danielagomez_ghost_content` and `danielagomez_ghost_db_data` Docker volumes before updates, then pull and recreate the images:
 
 ```sh
 docker compose pull
 docker compose up -d
 ```
 
-Keep `site/user/accounts/` and other runtime directories out of version control. Before publishing real photographs, strip EXIF/GPS metadata, confirm consent and usage rights, and use HTTPS through the reverse proxy that fronts this stack.
+Before publishing real photographs, strip EXIF/GPS metadata, confirm consent and usage rights, and keep the site behind HTTPS through Traefik. Configure transactional SMTP in Ghost so password recovery and admin notifications work reliably.

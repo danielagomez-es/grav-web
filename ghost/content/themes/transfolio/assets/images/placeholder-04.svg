@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder portrait with city glow</title>
+  <desc id="desc">An abstract portrait silhouette against a cobalt city-light pattern.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#211a32"/><stop offset=".58" stop-color="#5bcefa"/><stop offset="1" stop-color="#f5a9b8"/></linearGradient>
+    <pattern id="lights" width="95" height="95" patternUnits="userSpaceOnUse"><circle cx="16" cy="28" r="5" fill="#fff" opacity=".72"/><circle cx="68" cy="72" r="7" fill="#f59f8f" opacity=".72"/></pattern>
+  </defs>
+  <rect width="900" height="1125" fill="url(#bg)"/>
+  <rect width="900" height="1125" fill="url(#lights)" opacity=".7"/>
+  <circle cx="450" cy="370" r="165" fill="#211a32" opacity=".95"/>
+  <path d="M155 930c30-248 140-356 295-356s265 108 295 356z" fill="#211a32" opacity=".95"/>
+  <path d="M287 297c35-142 224-187 331-28-72-45-158-57-230-20-43 22-73 41-101 48z" fill="#211a32"/>
+  <path d="M270 775h360v155H270z" fill="#5bcefa" opacity=".5"/>
+</svg>
